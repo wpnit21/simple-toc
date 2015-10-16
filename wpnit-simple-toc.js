@@ -75,16 +75,16 @@ jQuery(document).ready(function($) {
 
         jcontent.find('h2,h3,h4,h5,h6').each(function(i) {
             var current = $(this);
-            current.attr('id', 'wpnit-simple-toc-' + i);
+            current.attr('id', 'wpnit-stoc-' + i);
             var cls = current.prop('tagName').toLowerCase();
-            current.addClass('wpnit-simple-toc-header-' + cls);
+            current.addClass('wpnit-stoc-h-' + cls);
 
             if (i > 0) {
                 jtoc.append('<br />');
             }
-            jtoc.append('<a id="wpnit-simple-toc-link-' + i +
-                            '" href="#wpnit-simple-toc-' + i +
-                            '" class="wpnit-simple-toc-link-' + cls + '">' +
+            jtoc.append('<a id="wpnit-stoc-link-' + i +
+                            '" href="#wpnit-stoc-' + i +
+                            '" class="wpnit-stoc-a-' + cls + '">' +
                             current.text() + '</a>');
         });
         

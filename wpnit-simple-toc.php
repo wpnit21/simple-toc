@@ -14,11 +14,12 @@ class WPNit_Simple_Toc {
     function __construct() {
     	add_action( 'admin_enqueue_scripts', array($this, 'action_admin_enqueue_scripts') );
     	add_action( 'admin_init', array($this, 'action_admin_init') );
+    	add_action( 'wp_enqueue_scripts', array($this, 'action_wp_enqueue_scripts') );
     }
 
     function action_admin_enqueue_scripts($hook) {
-        if ( 'post.php' == $hook || 'post-new.php' == $hook ) {
-            wp_enqueue_script( 'wpnit_simple_toc_script', plugin_dir_url( __FILE__ ) . 'wpnit-simple-toc.js' );
+        if ('post.php' == $hook || 'post-new.php' == $hook) {
+            wp_enqueue_script('wpnit_simple_toc_script', plugin_dir_url( __FILE__ ) . 'wpnit-simple-toc.js');
         }
     }
 
@@ -30,6 +31,10 @@ class WPNit_Simple_Toc {
 			add_filter( 'tiny_mce_before_init', array( $this, 'filter_mce_plugin' ) );
 		}
 	}
+
+    function action_wp_enqueue_scripts() {
+        wp_enqueue_style('wpnit_simple_toc_style', plugin_dir_url( __FILE__ ) . 'wpnit-simple-toc.css');
+    }
 		
 	function filter_mce_button( $buttons ) {
 		// Add a separation before our button, here our button's id is "TOC_button"
